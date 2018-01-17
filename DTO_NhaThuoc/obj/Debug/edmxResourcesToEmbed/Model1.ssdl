@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_NhaThuocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietPhieuXuat">
+    <Key>
+      <PropertyRef Name="MaPX" />
+      <PropertyRef Name="TenDP" />
+    </Key>
+    <Property Name="MaPX" Type="int" Nullable="false" />
+    <Property Name="TenDP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="DVT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GiaBan" Type="text" Nullable="false" />
+    <Property Name="ThanhTien" Type="text" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QL_NhaThuoc.dbo.DangKy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DangKy">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="pass" />
+      <PropertyRef Name="HoTen" />
+      <PropertyRef Name="SDT" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="ChucVu" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DanhMucDP">
+    <Key>
+      <PropertyRef Name="TenDP" />
+    </Key>
+    <Property Name="MaDP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NhaSanXuat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DVT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="GiaNhap" Type="text" Nullable="false" />
+    <Property Name="GiaBan" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieuNhap" />
+    </Key>
+    <Property Name="MaPhieuNhap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayNhap" Type="text" Nullable="false" />
+    <Property Name="ThangNamNhap" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="DVT" Type="nchar" MaxLength="10" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuXuat">
+    <Key>
+      <PropertyRef Name="MaPX" />
+    </Key>
+    <Property Name="MaPX" Type="int" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="NgayXuat" Type="text" Nullable="false" />
+    <Property Name="ThangNamXuat" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="TenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TongTien" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ThemDP" Type="int" Nullable="false" />
+    <Property Name="SuaDP" Type="int" Nullable="false" />
+    <Property Name="NhapHang" Type="int" Nullable="false" />
+    <Property Name="XuatHang" Type="int" Nullable="false" />
+    <Property Name="QlUsers" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ChiTietPhieuXuat_DanhMucDP">
+    <End Role="DanhMucDP" Type="Self.DanhMucDP" Multiplicity="1" />
+    <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMucDP">
+        <PropertyRef Name="TenDP" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuXuat">
+        <PropertyRef Name="TenDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPhieuXuat_PhieuXuat">
+    <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="1" />
+    <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuXuat">
+        <PropertyRef Name="MaPX" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuXuat">
+        <PropertyRef Name="MaPX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuNhap_DanhMucDP1">
+    <End Role="DanhMucDP" Type="Self.DanhMucDP" Multiplicity="1" />
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMucDP">
+        <PropertyRef Name="TenDP" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="TenDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuXuat_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuXuat">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_NhaThuocModelStoreContainer">
+    <EntitySet Name="ChiTietPhieuXuat" EntityType="Self.ChiTietPhieuXuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhMucDP" EntityType="Self.DanhMucDP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuXuat" EntityType="Self.PhieuXuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DangKy" EntityType="Self.DangKy" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DangKy].[ID] AS [ID], 
+    [DangKy].[pass] AS [pass], 
+    [DangKy].[HoTen] AS [HoTen], 
+    [DangKy].[SDT] AS [SDT], 
+    [DangKy].[Email] AS [Email], 
+    [DangKy].[ChucVu] AS [ChucVu]
+    FROM [dbo].[DangKy] AS [DangKy]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ChiTietPhieuXuat_DanhMucDP" Association="Self.FK_ChiTietPhieuXuat_DanhMucDP">
+      <End Role="DanhMucDP" EntitySet="DanhMucDP" />
+      <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPhieuXuat_PhieuXuat" Association="Self.FK_ChiTietPhieuXuat_PhieuXuat">
+      <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+      <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNhap_DanhMucDP1" Association="Self.FK_PhieuNhap_DanhMucDP1">
+      <End Role="DanhMucDP" EntitySet="DanhMucDP" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuXuat_Users" Association="Self.FK_PhieuXuat_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,1 @@
+ADMIN_PC\SQLEXPRESS;Initial Catalog=QL_NhaThuoc;Persist Security Info=True;User ID=sa;Password=chungcien;

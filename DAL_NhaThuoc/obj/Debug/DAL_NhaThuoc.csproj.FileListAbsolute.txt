@@ -1,0 +1,8 @@
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\bin\Debug\DAL_NhaThuoc.dll
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\bin\Debug\DAL_NhaThuoc.pdb
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\bin\Debug\DTO_NhaThuoc.dll
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\bin\Debug\DTO_NhaThuoc.pdb
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\obj\Debug\DAL_NhaThuoc.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\obj\Debug\DAL_NhaThuoc.dll
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\obj\Debug\DAL_NhaThuoc.pdb
+C:\Users\Admin\Desktop\QL_NhaThuoc\DAL_NhaThuoc\obj\Debug\DAL_NhaThuoc.csproj.CoreCompileInputs.cache
